@@ -14,6 +14,7 @@ const CodeEditor = ({text, update}) => (
   <textarea placeholder="code: this"
             value={text}
             oninput={e => update(e.target.value)}
+            class={styles.editor}
           />
 )
 
