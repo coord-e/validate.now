@@ -1,0 +1,36 @@
+{
+  "dependencies": {
+    "@hyperapp/router": "^0.4.1",
+    "hyperapp": "^1.0.2"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-hyperapp": "^2.3.0",
+    "postcss": "^6.0.16",
+    "postcss-modules": "^1.1.0",
+    "rollup": "^0.55.3",
+    "rollup-plugin-babel": "^3.0.3",
+    "rollup-plugin-node-resolve": "^3.0.2",
+    "rollup-plugin-postcss": "^1.2.8",
+    "rollup-plugin-uglify": "^3.0.0"
+  },
+  "name": "vaildate.now",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coord-e/vaildate.git"
+  },
+  "author": "coord.e",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/coord-e/vaildate/issues"
+  },
+  "homepage": "https://github.com/coord-e/vaildate#readme",
+  "description": "Simple schema vaildator"
+}
