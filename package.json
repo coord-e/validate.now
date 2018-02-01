@@ -8,6 +8,7 @@
     "babel-plugin-external-helpers": "^6.22.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-hyperapp": "^2.3.0",
+    "npm-run-all": "^4.1.2",
     "postcss": "^6.0.16",
     "postcss-modules": "^1.1.0",
     "rollup": "^0.55.3",
@@ -24,7 +25,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "NODE_ENV=production rollup -c",
     "watch": "NODE_ENV=development rollup -c -w",
-    "start": "serve dist"
+    "start": "serve dist",
+    "dev": "npm-run-all --parallel start watch"
   },
   "repository": {
     "type": "git",
