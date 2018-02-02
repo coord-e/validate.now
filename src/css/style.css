@@ -17,8 +17,21 @@
 }
 
 .errorbox{
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.error{
   font-family: Consolas, 'Courier New', Courier, Monaco, monospace;
   color: #F44336;
   background-color: black;
-  flex-grow: 1;
+  margin: 10px;
+  display: inline;
+}
+
+.noerror{
+  color: #7f8c8d;
+  font-size: xx-large;
 }

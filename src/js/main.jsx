@@ -33,6 +33,16 @@ const CodeEditor = ({text, update}) => (
           />
 )
 
+const ErrorBox = ({error, text="Vaild!"}) => (
+  <div class={styles.errorbox}>
+    {
+      error
+        ? <pre class={styles.error}>{JSON.stringify(error, undefined, 2)}</pre>
+        : <span class={styles.noerror}>{text}</span>
+    }
+  </div>
+)
+
 const view = (state, actions) => (
   <main class={styles.main}>
     <div class={styles.container}>
@@ -45,7 +55,7 @@ const view = (state, actions) => (
                                               actions.validate();
                                               }} />
     </div>
-    {state.errors && <pre class={styles.errorbox}>{JSON.stringify(state.errors, undefined, 2)}</pre>}
+    <ErrorBox error={state.errors} />
   </main>
 )
 
