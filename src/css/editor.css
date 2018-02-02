@@ -1,0 +1,13 @@
+.container{
+  flex-grow: 3;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.editor{
+  font-family: Consolas, 'Courier New', Courier, Monaco, monospace;
+  margin: 5px;
+  flex-grow: 1;
+  min-width: 500px;
+}
+

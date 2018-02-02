@@ -1,0 +1,20 @@
+.container{
+  margin: 5px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.view{
+  font-family: Consolas, 'Courier New', Courier, Monaco, monospace;
+  color: #F44336;
+  background-color: black;
+  flex-grow: 1;
+  height: 100%;
+}
+
+.valid{
+  color: #7f8c8d;
+  font-size: xx-large;
+}
