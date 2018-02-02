@@ -52,9 +52,11 @@ const actions = {
     if(!schema)
       return { errors: "Failed to load schema: schema is not json or yaml" }
 
-    const result = ajv.validate(schema, data)
-    if(!result)
-      console.error(`Vaildation error: ${ajv.errors}`)
+    try{
+      ajv.validate(schema, data)
+    }catch(e){
+      return { errors: e.message }
+    }
     return { errors: ajv.errors }
   }
 }
