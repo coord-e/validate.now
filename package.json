@@ -24,7 +24,7 @@
     "rollup-plugin-uglify": "^3.0.0",
     "serve": "^6.4.9"
   },
-  "name": "vaildate.now",
+  "name": "validate.now",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -36,13 +36,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/coord-e/vaildate.git"
+    "url": "git+https://github.com/coord-e/validate.now.git"
   },
   "author": "coord.e",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/coord-e/vaildate/issues"
+    "url": "https://github.com/coord-e/validate.now/issues"
   },
-  "homepage": "https://github.com/coord-e/vaildate#readme",
-  "description": "Simple schema vaildator"
+  "homepage": "https://github.com/coord-e/validate.now#readme",
+  "description": "Simple schema vaildation webapp"
 }
