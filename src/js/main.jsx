@@ -33,7 +33,7 @@ const CodeEditor = ({text, update}) => (
           />
 )
 
-const ErrorBox = ({error, text="Vaild!"}) => (
+const ErrorBox = ({error, text="Valid!"}) => (
   <div class={styles.errorbox}>
     {
       error
