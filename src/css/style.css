@@ -12,12 +12,13 @@
 
 .editor{
   font-family: Consolas, 'Courier New', Courier, Monaco, monospace;
-  margin: 10px;
+  margin: 5px;
   flex-grow: 1;
 }
 
 .errorbox{
-  flex-grow: 1;
+  margin: 5px;
+  height: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,8 +28,8 @@
   font-family: Consolas, 'Courier New', Courier, Monaco, monospace;
   color: #F44336;
   background-color: black;
-  margin: 10px;
-  display: inline;
+  flex-grow: 1;
+  height: 100%;
 }
 
 .noerror{

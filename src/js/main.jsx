@@ -37,7 +37,7 @@ const ErrorBox = ({error, text="Vaild!"}) => (
   <div class={styles.errorbox}>
     {
       error
-        ? <pre class={styles.error}>{JSON.stringify(error, undefined, 2)}</pre>
+        ? <textarea readonly class={styles.error}>{JSON.stringify(error, undefined, 2)}</textarea>
         : <span class={styles.noerror}>{text}</span>
     }
   </div>
