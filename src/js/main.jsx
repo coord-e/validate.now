@@ -2,12 +2,27 @@ import { h, app } from "hyperapp"
 
 import styles from "../css/style.css"
 
+import Ajv from 'ajv'
+import YAML from 'yamljs'
+
+const ajv = new Ajv({$data: true})
+
 const state = {
-  text: "",
+  data: "",
+  schema: "",
 }
 
 const actions = {
-  update: text => state => ({ text }),
+  update_schema: text => state => ({ schema: text }),
+  update_data: text => state => ({ data: text }),
+  validate: () => state => {
+    const data = YAML.parse(state.data)
+    const schema = YAML.parse(state.schema)
+    const result = ajv.validate(schema, data)
+    if(!result)
+      console.error(`Vaildation error: ${ajv.errors}`)
+    return { errors: ajv.errors }
+  }
 }
 
 const CodeEditor = ({text, update}) => (
@@ -21,7 +36,10 @@ const CodeEditor = ({text, update}) => (
 const view = (state, actions) => (
   <div>
     <main>
-      <CodeEditor text={state.text} update={actions.update} />
+      <CodeEditor text={state.data} update={actions.update_data} />
+      <CodeEditor text={state.schema} update={actions.update_schema} />
+      <button onclick={actions.validate}>Vaildate</button>
+      {state.errors && <pre class={styles.errorbox}>{JSON.stringify(state.errors, undefined, 2)}</pre>}
     </main>
   </div>
 )

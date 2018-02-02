@@ -1,7 +1,9 @@
 {
   "dependencies": {
     "@hyperapp/router": "^0.4.1",
-    "hyperapp": "^1.0.2"
+    "ajv": "^6.1.1",
+    "hyperapp": "^1.0.2",
+    "yamljs": "^0.3.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
@@ -14,6 +16,9 @@
     "rollup": "^0.55.3",
     "rollup-plugin-babel": "^3.0.3",
     "rollup-plugin-commonjs": "^8.3.0",
+    "rollup-plugin-json": "^2.3.0",
+    "rollup-plugin-node-builtins": "^2.1.2",
+    "rollup-plugin-node-globals": "^1.1.0",
     "rollup-plugin-node-resolve": "^3.0.2",
     "rollup-plugin-postcss": "^1.2.8",
     "rollup-plugin-uglify": "^3.0.0",

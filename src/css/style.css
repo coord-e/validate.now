@@ -3,3 +3,8 @@
   height: 80vh;
   width: 50vw;
 }
+.errorbox{
+  font-family: Consolas, 'Courier New', Courier, Monaco, monospace;
+  color: red;
+  background-color: black;
+}

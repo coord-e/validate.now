@@ -5,6 +5,9 @@ import resolve from "rollup-plugin-node-resolve"
 import uglify from "rollup-plugin-uglify"
 import commonjs from 'rollup-plugin-commonjs'
 import postcss from 'rollup-plugin-postcss'
+import json from 'rollup-plugin-json'
+import builtins from 'rollup-plugin-node-builtins'
+import globals from 'rollup-plugin-node-globals'
 
 const dist = 'dist/'
 const src = 'src/'
@@ -17,11 +20,18 @@ export default {
 		sourcemap: true
 	},
   plugins: [
+    json(),
+    builtins(),
+    globals(),
     postcss({
       modules: true
     }),
+    resolve({
+      jsnext: true,
+      browser: true
+    }),
     commonjs({
-      include: 'node_modules/**'
+       include: 'node_modules/**'
     }),
     babel({
       presets: [
@@ -38,9 +48,6 @@ export default {
       ],
       exclude: 'node_modules/**',
       babelrc: false
-    }),
-    resolve({
-      jsnext: true
     }),
     uglify()
   ]
