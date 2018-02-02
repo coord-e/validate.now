@@ -107,7 +107,7 @@ const view = (state, actions) => (
                                                 }} />
       }
     </div>
-    <ErrorBox error={state.errors} toggle_hide={actions.toggle_hide}/>
+    <ErrorBox error={state.errors} toggle_hide={actions.toggle_hide} hidden={state.schema_hidden}/>
   </main>
 )
 

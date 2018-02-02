@@ -2,7 +2,7 @@ import { h } from "hyperapp"
 
 import errorStyles from "../css/error.css"
 
-export default ({error, text="Valid!", toggle_hide}) => (
+export default ({error, text="Valid!", toggle_hide, hidden}) => (
   <div>
     <div class={errorStyles.container}>
       {
@@ -13,6 +13,6 @@ export default ({error, text="Valid!", toggle_hide}) => (
           </div>
       }
     </div>
-    <button class={errorStyles.toggle} onclick={toggle_hide}>Hide/Show schema</button>
+    <button class={errorStyles.toggle} onclick={toggle_hide}>{hidden ? "Show" : "Hide"} schema</button>
   </div>
 )
