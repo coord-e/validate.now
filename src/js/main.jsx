@@ -36,9 +36,14 @@ const CodeEditor = ({text, update}) => (
 const view = (state, actions) => (
   <div>
     <main>
-      <CodeEditor text={state.data} update={actions.update_data} />
-      <CodeEditor text={state.schema} update={actions.update_schema} />
-      <button onclick={actions.validate}>Vaildate</button>
+      <CodeEditor text={state.data} update={value => {
+                                              actions.update_data(value);
+                                              actions.validate();
+                                              }} />
+      <CodeEditor text={state.schema} update={value => {
+                                              actions.update_schema(value);
+                                              actions.validate();
+                                              }} />
       {state.errors && <pre class={styles.errorbox}>{JSON.stringify(state.errors, undefined, 2)}</pre>}
     </main>
   </div>
