@@ -10,8 +10,24 @@ import YAML from 'yamljs'
 const ajv = new Ajv({$data: true})
 
 const state = {
-  data: "",
-  schema: "",
+  data: `string: string
+integer: 10
+array:
+  - 1
+  - 2
+  - 3`,
+  schema: `type: object
+required:
+  - string
+properties:
+  string:
+    type: string
+  integer:
+    type: integer
+  array:
+    type: array
+    items:
+      type: integer`
 }
 
 const getYAML = (str) => {
