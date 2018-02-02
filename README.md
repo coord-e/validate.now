@@ -2,7 +2,9 @@
 
 [validate.now](https://validate.now.sh)
 
-Simple scheme validation app built with web technology
+Simple schema validation app built with web technology
+
+Schema format: [JSON Schema draft-07](http://json-schema.org/)
 
 ## Development
 
