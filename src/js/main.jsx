@@ -2,7 +2,9 @@ import { h, app } from "hyperapp"
 
 import styles from "../css/style.css"
 import editorStyles from "../css/editor.css"
-import errorStyles from "../css/error.css"
+
+import CodeEditor from "./CodeEditor.jsx"
+import ErrorBox from "./ErrorBox.jsx"
 
 import Ajv from 'ajv'
 import YAML from 'yamljs'
@@ -84,27 +86,6 @@ const actions = {
     return { data_error: !result, schema_error: false, errors: ajv.errors }
   }
 }
-
-const CodeEditor = ({text, update, style, label, placeholder}) => (
-  <div class={`${editorStyles.container} ${style}`}>
-    <textarea placeholder={placeholder}
-              value={text}
-              oninput={e => update(e.target.value)}
-              class={editorStyles.editor}
-            />
-    <div class={editorStyles.label}>{label}</div>
-  </div>
-)
-
-const ErrorBox = ({error, text="Valid!"}) => (
-  <div class={errorStyles.container}>
-    {
-      error
-        ? <textarea readonly class={errorStyles.view}>{JSON.stringify(error, undefined, 2)}</textarea>
-        : <span class={errorStyles.valid}>{text}</span>
-    }
-  </div>
-)
 
 const view = (state, actions) => (
   <main class={styles.main}>
