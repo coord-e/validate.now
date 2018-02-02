@@ -6,8 +6,10 @@
 
 .editor{
   font-family: Consolas, 'Courier New', Courier, Monaco, monospace;
+  font-size: 16px;
+  border-radius: 0;
   margin: 5px;
   flex-grow: 1;
-  min-width: 500px;
+  flex-basis: 500px;
 }
 

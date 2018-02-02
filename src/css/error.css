@@ -8,13 +8,16 @@
 
 .view{
   font-family: Consolas, 'Courier New', Courier, Monaco, monospace;
+  border-radius: 0;
   color: #F44336;
   background-color: black;
   flex-grow: 1;
   height: 100%;
+  font-size: 16px;
 }
 
 .valid{
+  font-family: sans-serif;
   color: #7f8c8d;
   font-size: xx-large;
 }
