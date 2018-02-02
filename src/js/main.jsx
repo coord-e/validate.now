@@ -12,7 +12,7 @@ import YAML from 'yamljs'
 const ajv = new Ajv({$data: true})
 
 const schemaFromURI = decodeURIComponent(location.pathname.substring(1))
-const isSchemaHidden = location.search.substring(1).includes('hide_schema')
+const isSchemaHidden = location.search.substring(1).includes('schema_hidden')
 
 const state = {
   data: schemaFromURI ? '' : `string: string
@@ -86,6 +86,10 @@ const actions = {
       return { schema_error: true, errors: e.message }
     }
     return { data_error: !result, schema_error: false, errors: ajv.errors }
+  },
+  toggle_hide: () => state => {
+    history.replaceState({hidden: !state.schema_hidden}, null, `${location.pathname}${state.schema_hidden ? '' : '?schema_hidden'}`)
+    return {schema_hidden: !state.schema_hidden}
   }
 }
 
@@ -103,7 +107,7 @@ const view = (state, actions) => (
                                                 }} />
       }
     </div>
-    <ErrorBox error={state.errors} />
+    <ErrorBox error={state.errors} toggle_hide={actions.toggle_hide}/>
   </main>
 )
 

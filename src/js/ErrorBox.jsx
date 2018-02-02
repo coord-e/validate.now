@@ -2,12 +2,15 @@ import { h } from "hyperapp"
 
 import errorStyles from "../css/error.css"
 
-export default ({error, text="Valid!"}) => (
+export default ({error, text="Valid!", toggle_hide}) => (
   <div class={errorStyles.container}>
     {
       error
         ? <textarea readonly class={errorStyles.view}>{JSON.stringify(error, undefined, 2)}</textarea>
-        : <span class={errorStyles.valid}>{text}</span>
+        : <div>
+          <span class={errorStyles.valid}>{text}</span>
+          <button class={errorStyles.toggle} onclick={toggle_hide}>Hide/Show schema</button>
+        </div>
     }
   </div>
 )
