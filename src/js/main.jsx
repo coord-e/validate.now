@@ -12,6 +12,7 @@ import YAML from 'yamljs'
 const ajv = new Ajv({$data: true})
 
 const schemaFromURI = decodeURIComponent(location.pathname.substring(1))
+const isSchemaHidden = location.search.substring(1).includes('hide_schema')
 
 const state = {
   data: `string: string
@@ -33,7 +34,8 @@ properties:
     items:
       type: integer`,
   data_error: false,
-  schema_error: false
+  schema_error: false,
+  schema_hidden: isSchemaHidden
 }
 
 const getYAML = (str) => {
@@ -94,10 +96,12 @@ const view = (state, actions) => (
                                               actions.update_data(value);
                                               actions.validate();
                                               }} />
-      <CodeEditor label="SCHEMA" text={state.schema} is_error={state.schema_error} placeholder="Input schema..." update={value => {
-                                              actions.update_schema(value);
-                                              actions.validate();
-                                              }} />
+      {
+        state.schema_hidden || <CodeEditor label="SCHEMA" text={state.schema} is_error={state.schema_error} placeholder="Input schema..." update={value => {
+                                                actions.update_schema(value);
+                                                actions.validate();
+                                                }} />
+      }
     </div>
     <ErrorBox error={state.errors} />
   </main>
