@@ -15,7 +15,7 @@ const schemaFromURI = decodeURIComponent(location.pathname.substring(1))
 const isSchemaHidden = location.search.substring(1).includes('hide_schema')
 
 const state = {
-  data: `string: string
+  data: schemaFromURI ? '' : `string: string
 integer: 10
 array:
   - 1
@@ -90,7 +90,7 @@ const actions = {
 }
 
 const view = (state, actions) => (
-  <main class={styles.main}>
+  <main class={styles.main} oncreate={actions.validate}>
     <div class={editorStyles.area}>
       <CodeEditor label="DATA" text={state.data} is_error={state.data_error} laceholder="Input data..." update={value => {
                                               actions.update_data(value);
