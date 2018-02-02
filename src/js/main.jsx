@@ -14,12 +14,44 @@ const state = {
   schema: "",
 }
 
+const getYAML = (str) => {
+  try{
+    return YAML.parse(str)
+  }catch(e){
+    return null
+  }
+}
+
+const getJSON = (str) => {
+  try{
+    return JSON.parse(str)
+  }catch(e){
+    return null
+  }
+}
+
+const load = (str) => {
+  let data
+  if(data = getJSON(str))
+    return data
+  if(data = getYAML(str))
+    return data
+  return null
+}
+
+
 const actions = {
   update_schema: text => state => ({ schema: text }),
   update_data: text => state => ({ data: text }),
   validate: () => state => {
-    const data = YAML.parse(state.data)
-    const schema = YAML.parse(state.schema)
+    const data = load(state.data)
+    if(!data)
+      return { errors: "Failed to load data: data is not json or yaml" }
+
+    const schema = load(state.schema)
+    if(!schema)
+      return { errors: "Failed to load schema: schema is not json or yaml" }
+
     const result = ajv.validate(schema, data)
     if(!result)
       console.error(`Vaildation error: ${ajv.errors}`)
