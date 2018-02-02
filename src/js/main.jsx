@@ -90,11 +90,11 @@ const actions = {
 const view = (state, actions) => (
   <main class={styles.main}>
     <div class={editorStyles.area}>
-      <CodeEditor label="DATA" text={state.data} style={state.data_error ? editorStyles.invalid : editorStyles.valid} placeholder="Input data..." update={value => {
+      <CodeEditor label="DATA" text={state.data} is_error={state.data_error} laceholder="Input data..." update={value => {
                                               actions.update_data(value);
                                               actions.validate();
                                               }} />
-      <CodeEditor label="SCHEMA" text={state.schema} style={state.schema_error ? editorStyles.invalid : editorStyles.valid} placeholder="Input schema..." update={value => {
+      <CodeEditor label="SCHEMA" text={state.schema} is_error={state.schema_error} placeholder="Input schema..." update={value => {
                                               actions.update_schema(value);
                                               actions.validate();
                                               }} />
