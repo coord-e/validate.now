@@ -1,6 +1,6 @@
-# [validate.now](https://validate.now.sh)
+# validate.now
 
-![logo](/dist/validate.now.png)
+![logo](/dist/favicon.ico) [https://validate.now.sh](https://validate.now.sh)
 
 Simple schema validation app built with web technology
 
