@@ -34,8 +34,8 @@ const CodeEditor = ({text, update}) => (
 )
 
 const view = (state, actions) => (
-  <div>
-    <main>
+  <main class={styles.main}>
+    <div class={styles.container}>
       <CodeEditor text={state.data} update={value => {
                                               actions.update_data(value);
                                               actions.validate();
@@ -44,9 +44,9 @@ const view = (state, actions) => (
                                               actions.update_schema(value);
                                               actions.validate();
                                               }} />
-      {state.errors && <pre class={styles.errorbox}>{JSON.stringify(state.errors, undefined, 2)}</pre>}
-    </main>
-  </div>
+    </div>
+    {state.errors && <pre class={styles.errorbox}>{JSON.stringify(state.errors, undefined, 2)}</pre>}
+  </main>
 )
 
 const main = app(state, actions, view, document.body)

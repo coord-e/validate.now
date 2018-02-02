@@ -1,10 +1,24 @@
+.main{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.container{
+  flex-grow: 3;
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .editor{
   font-family: Consolas, 'Courier New', Courier, Monaco, monospace;
-  height: 80vh;
-  width: 50vw;
+  margin: 10px;
+  flex-grow: 1;
 }
+
 .errorbox{
   font-family: Consolas, 'Courier New', Courier, Monaco, monospace;
-  color: red;
+  color: #F44336;
   background-color: black;
+  flex-grow: 1;
 }
