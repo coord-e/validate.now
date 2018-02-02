@@ -80,12 +80,15 @@ const actions = {
   }
 }
 
-const CodeEditor = ({text, update, style, placeholder}) => (
-  <textarea placeholder={placeholder}
-            value={text}
-            oninput={e => update(e.target.value)}
-            class={`${editorStyles.editor} ${style}`}
-          />
+const CodeEditor = ({text, update, style, label, placeholder}) => (
+  <div class={`${editorStyles.container} ${style}`}>
+    <textarea placeholder={placeholder}
+              value={text}
+              oninput={e => update(e.target.value)}
+              class={editorStyles.editor}
+            />
+    <div class={editorStyles.label}>{label}</div>
+  </div>
 )
 
 const ErrorBox = ({error, text="Valid!"}) => (
@@ -100,12 +103,12 @@ const ErrorBox = ({error, text="Valid!"}) => (
 
 const view = (state, actions) => (
   <main class={styles.main}>
-    <div class={editorStyles.container}>
-      <CodeEditor text={state.data} style={state.data_error ? editorStyles.invalid : editorStyles.valid} placeholder="Input data..." update={value => {
+    <div class={editorStyles.area}>
+      <CodeEditor label="DATA" text={state.data} style={state.data_error ? editorStyles.invalid : editorStyles.valid} placeholder="Input data..." update={value => {
                                               actions.update_data(value);
                                               actions.validate();
                                               }} />
-      <CodeEditor text={state.schema} style={state.schema_error ? editorStyles.invalid : editorStyles.valid} placeholder="Input schema..." update={value => {
+      <CodeEditor label="SCHEMA" text={state.schema} style={state.schema_error ? editorStyles.invalid : editorStyles.valid} placeholder="Input schema..." update={value => {
                                               actions.update_schema(value);
                                               actions.validate();
                                               }} />
