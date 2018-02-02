@@ -77,11 +77,11 @@ const actions = {
   }
 }
 
-const CodeEditor = ({text, update, placeholder}) => (
+const CodeEditor = ({text, update, style, placeholder}) => (
   <textarea placeholder={placeholder}
             value={text}
             oninput={e => update(e.target.value)}
-            class={editorStyles.editor}
+            class={`${editorStyles.editor} ${style}`}
           />
 )
 
@@ -98,7 +98,7 @@ const ErrorBox = ({error, text="Valid!"}) => (
 const view = (state, actions) => (
   <main class={styles.main}>
     <div class={editorStyles.container}>
-      <CodeEditor text={state.data} placeholder="Input data..." update={value => {
+      <CodeEditor text={state.data} style={state.errors ? editorStyles.invalid : editorStyles.valid} placeholder="Input data..." update={value => {
                                               actions.update_data(value);
                                               actions.validate();
                                               }} />

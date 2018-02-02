@@ -9,6 +9,7 @@
 .view{
   font-family: Consolas, 'Courier New', Courier, Monaco, monospace;
   border-radius: 0;
+  border-style: none;
   color: #F44336;
   background-color: black;
   flex-grow: 1;
