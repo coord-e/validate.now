@@ -92,7 +92,7 @@ const actions = {
 const view = (state, actions) => (
   <main class={styles.main} oncreate={actions.validate}>
     <div class={editorStyles.area}>
-      <CodeEditor label="DATA" text={state.data} is_error={state.data_error} laceholder="Input data..." update={value => {
+      <CodeEditor label="DATA" text={state.data} is_error={state.data_error} placeholder="Input data..." update={value => {
                                               actions.update_data(value);
                                               actions.validate();
                                               }} />
