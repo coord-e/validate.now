@@ -96,5 +96,4 @@ Session.vim
 tags
 
 # output files
-dist/*
-!dist/index.html
+dist/js
