@@ -13,6 +13,7 @@ export default ({error, text="Valid!", toggle_hide, hidden}) => (
           </div>
       }
     </div>
+    <a href="https://github.com/coord-e/validate.now" class={errorStyles.github} target="_blank">GitHub</a>
     <button class={errorStyles.toggle} onclick={toggle_hide}>{hidden ? "Show" : "Hide"} schema</button>
   </div>
 )
