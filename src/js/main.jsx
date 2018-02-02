@@ -9,6 +9,8 @@ import YAML from 'yamljs'
 
 const ajv = new Ajv({$data: true})
 
+const schemaFromURI = decodeURIComponent(location.pathname.substring(1))
+
 const state = {
   data: `string: string
 integer: 10
@@ -16,7 +18,7 @@ array:
   - 1
   - 2
   - 3`,
-  schema: `type: object
+  schema: schemaFromURI || `type: object
 required:
   - string
 properties:
@@ -59,7 +61,10 @@ const load = (str) => {
 
 
 const actions = {
-  update_schema: text => state => ({ schema: text }),
+  update_schema: text => state =>{
+    history.replaceState({schema: text}, null, `/${encodeURIComponent(text)}`)
+    return { schema: text }
+  },
   update_data: text => state => ({ data: text }),
   validate: () => state => {
     const data = load(state.data)
