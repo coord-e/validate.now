@@ -7,7 +7,7 @@
 }
 
 .view{
-  font-family: Consolas, 'Courier New', Courier, Monaco, monospace;
+  font-family: 'Overpass Mono', monospace;
   border-radius: 0;
   border-style: none;
   color: #F44336;
@@ -18,7 +18,7 @@
 }
 
 .valid{
-  font-family: sans-serif;
+  font-family: 'Overpass', sans-serif;
   color: #7f8c8d;
   font-size: xx-large;
 }
