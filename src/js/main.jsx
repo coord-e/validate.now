@@ -27,7 +27,9 @@ properties:
   array:
     type: array
     items:
-      type: integer`
+      type: integer`,
+  data_error: false,
+  schema_error: false
 }
 
 const getYAML = (str) => {
@@ -62,18 +64,19 @@ const actions = {
   validate: () => state => {
     const data = load(state.data)
     if(!data)
-      return { errors: "Failed to load data: data is not json or yaml" }
+      return { data_error: true, errors: "Failed to load data: data is not json or yaml" }
 
     const schema = load(state.schema)
     if(!schema)
-      return { errors: "Failed to load schema: schema is not json or yaml" }
+      return { schema_error: true, errors: "Failed to load schema: schema is not json or yaml" }
 
+    let result;
     try{
-      ajv.validate(schema, data)
+      result = ajv.validate(schema, data)
     }catch(e){
-      return { errors: e.message }
+      return { schema_error: true, errors: e.message }
     }
-    return { errors: ajv.errors }
+    return { data_error: !result, schema_error: false, errors: ajv.errors }
   }
 }
 
@@ -98,11 +101,11 @@ const ErrorBox = ({error, text="Valid!"}) => (
 const view = (state, actions) => (
   <main class={styles.main}>
     <div class={editorStyles.container}>
-      <CodeEditor text={state.data} style={state.errors ? editorStyles.invalid : editorStyles.valid} placeholder="Input data..." update={value => {
+      <CodeEditor text={state.data} style={state.data_error ? editorStyles.invalid : editorStyles.valid} placeholder="Input data..." update={value => {
                                               actions.update_data(value);
                                               actions.validate();
                                               }} />
-      <CodeEditor text={state.schema} placeholder="Input schema..." update={value => {
+      <CodeEditor text={state.schema} style={state.schema_error ? editorStyles.invalid : editorStyles.valid} placeholder="Input schema..." update={value => {
                                               actions.update_schema(value);
                                               actions.validate();
                                               }} />
